@@ -1,0 +1,51 @@
+[gd_scene load_steps=8 format=3 uid="uid://b8yet8xni56px"]
+
+[ext_resource type="Texture2D" uid="uid://bn00efarc5wf3" path="res://Assets/Base Character - Free/idle.png" id="1_hucik"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ahg23"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fd253"]
+atlas = ExtResource("1_hucik")
+region = Rect2(0, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l0mt6"]
+atlas = ExtResource("1_hucik")
+region = Rect2(80, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b7hbs"]
+atlas = ExtResource("1_hucik")
+region = Rect2(160, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j1tl4"]
+atlas = ExtResource("1_hucik")
+region = Rect2(240, 0, 80, 80)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wfwyn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fd253")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l0mt6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b7hbs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j1tl4")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="beta_player" type="CharacterBody2D"]
+scale = Vector2(3, 3)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ahg23")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_wfwyn")
+animation = &"idle"

@@ -1,105 +1,18 @@
-[gd_scene load_steps=17 format=3 uid="uid://cvryq5ah4nobw"]
+[gd_scene load_steps=7 format=3 uid="uid://cvryq5ah4nobw"]
 
 [ext_resource type="Script" path="res://Scenes/manager.gd" id="1_u02xh"]
-[ext_resource type="Texture2D" uid="uid://bn00efarc5wf3" path="res://Assets/Base Character - Free/idle.png" id="2_j4a4n"]
-[ext_resource type="Texture2D" uid="uid://6xbbvkr7thjt" path="res://Assets/Base Character - Free/run.png" id="3_xa864"]
+[ext_resource type="PackedScene" uid="uid://b8yet8xni56px" path="res://Scenes/beta_player.tscn" id="4_t6i0h"]
+[ext_resource type="PackedScene" uid="uid://bv40xti1sp5a6" path="res://Scenes/ladders.tscn" id="5_ee371"]
+[ext_resource type="Texture2D" uid="uid://bpwnawqhnr2gx" path="res://Assets/tileset.png" id="5_wflul"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ovoih"]
-atlas = ExtResource("2_j4a4n")
-region = Rect2(0, 0, 80, 80)
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qbamr"]
+texture = ExtResource("5_wflul")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_wyue7"]
-atlas = ExtResource("2_j4a4n")
-region = Rect2(80, 0, 80, 80)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7gx86"]
-atlas = ExtResource("2_j4a4n")
-region = Rect2(160, 0, 80, 80)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vgihj"]
-atlas = ExtResource("2_j4a4n")
-region = Rect2(240, 0, 80, 80)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_51xpw"]
-atlas = ExtResource("3_xa864")
-region = Rect2(0, 0, 80, 80)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xis1r"]
-atlas = ExtResource("3_xa864")
-region = Rect2(80, 0, 80, 80)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_soa47"]
-atlas = ExtResource("3_xa864")
-region = Rect2(160, 0, 80, 80)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jemov"]
-atlas = ExtResource("3_xa864")
-region = Rect2(240, 0, 80, 80)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2tnkc"]
-atlas = ExtResource("3_xa864")
-region = Rect2(320, 0, 80, 80)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_kfnsm"]
-atlas = ExtResource("3_xa864")
-region = Rect2(400, 0, 80, 80)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_b5g4a"]
-atlas = ExtResource("3_xa864")
-region = Rect2(480, 0, 80, 80)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3fws7"]
-atlas = ExtResource("3_xa864")
-region = Rect2(560, 0, 80, 80)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_2ec2i"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ovoih")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wyue7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7gx86")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vgihj")
-}],
-"loop": true,
-"name": &"idle",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_51xpw")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xis1r")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_soa47")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jemov")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2tnkc")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_kfnsm")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_b5g4a")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3fws7")
-}],
-"loop": true,
-"name": &"new_animation",
-"speed": 5.0
-}]
+[sub_resource type="TileSet" id="TileSet_p3ipv"]
+tile_size = Vector2i(64, 64)
+sources/0 = SubResource("TileSetAtlasSource_qbamr")
 
 [node name="beta_world" type="Node2D"]
 script = ExtResource("1_u02xh")
@@ -123,10 +36,21 @@ offset_top = 408.0
 offset_right = 1072.0
 offset_bottom = 480.0
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(120, 512)
-scale = Vector2(3, 3)
-sprite_frames = SubResource("SpriteFrames_2ec2i")
-animation = &"new_animation"
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_p3ipv")
+format = 2
+layer_0/tile_data = PackedInt32Array(655361, 0, 0, 589825, 0, 0, 524289, 0, 0, 458753, 0, 0, 393217, 0, 0, 327681, 0, 0, 262145, 0, 0, 196609, 0, 0, 131073, 0, 0, 65537, 0, 0, 65538, 0, 0, 131074, 0, 0, 196610, 0, 0, 262146, 0, 0, 327682, 0, 0, 393218, 0, 0, 458754, 0, 0, 524290, 0, 0, 589826, 0, 0, 655362, 0, 0, 655363, 0, 0, 589827, 0, 0, 524291, 0, 0, 458755, 0, 0, 393219, 0, 0, 327683, 0, 0, 262147, 0, 0, 196611, 0, 0, 131075, 0, 0, 65539, 0, 0, 65540, 0, 0, 131076, 0, 0, 196612, 0, 0, 262148, 0, 0, 327684, 0, 0, 393220, 0, 0, 458756, 0, 0, 524292, 0, 0, 589828, 0, 0, 655364, 0, 0, 655365, 0, 0, 589829, 0, 0, 524293, 0, 0, 458757, 0, 0, 393221, 0, 0, 327685, 0, 0, 262149, 0, 0, 196613, 0, 0, 131077, 0, 0, 65541, 0, 0, 65542, 0, 0, 131078, 0, 0, 196614, 0, 0, 262150, 0, 0, 327686, 0, 0, 393222, 0, 0, 458758, 0, 0, 524294, 0, 0, 589830, 0, 0, 655366, 0, 0, 655367, 0, 0, 589831, 0, 0, 524295, 0, 0, 458759, 0, 0, 393223, 0, 0, 327687, 0, 0, 262151, 0, 0, 196615, 0, 0, 131079, 0, 0, 65543, 0, 0, 65544, 0, 0, 131080, 0, 0, 196616, 0, 0, 262152, 0, 0, 327688, 0, 0, 393224, 0, 0, 458760, 0, 0, 524296, 0, 0, 589832, 0, 0, 655368, 0, 0, 655369, 0, 0, 589833, 0, 0, 524297, 0, 0, 458761, 0, 0, 393225, 0, 0, 327689, 0, 0, 262153, 0, 0, 196617, 0, 0, 131081, 0, 0, 65545, 0, 0, 65546, 0, 0, 131082, 0, 0, 196618, 0, 0, 262154, 0, 0, 327690, 0, 0, 393226, 0, 0, 458762, 0, 0, 524298, 0, 0, 589834, 0, 0, 655370, 0, 0, 655371, 0, 0, 589835, 0, 0, 524299, 0, 0, 458763, 0, 0, 393227, 0, 0, 327691, 0, 0, 262155, 0, 0, 196619, 0, 0, 131083, 0, 0, 65547, 0, 0)
+
+[node name="ladders" parent="." node_paths=PackedStringArray("move_to") instance=ExtResource("5_ee371")]
+position = Vector2(736, 672)
+move_to = NodePath("../Marker2D")
+
+[node name="beta_player" parent="." instance=ExtResource("4_t6i0h")]
+position = Vector2(90, 671)
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(478, 554)
 
 [connection signal="pressed" from="Button" to="." method="dice_rolled"]
+
+[editable path="beta_player"]

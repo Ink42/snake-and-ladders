@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bv40xti1sp5a6"]
+
+[ext_resource type="Script" path="res://Scenes/ladders.gd" id="1_etsih"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ra0y0"]
+
+[node name="ladders" type="Area2D"]
+monitorable = false
+script = ExtResource("1_etsih")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(2.5, 2.5)
+shape = SubResource("RectangleShape2D_ra0y0")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
